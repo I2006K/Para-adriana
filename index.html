@@ -13,7 +13,6 @@
             background-color: rgb(252, 155, 171);
             height: 100vh;
             margin: 0;
-            padding: 20px;
             text-align: center;
         }
         h1 {
@@ -49,6 +48,13 @@
                 max-width: 80%;
             }
         }
+        button {
+            border-radius: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            width: 30%;
+            background-color: rgb(206, 104, 119);;
+        }
     </style>
 </head>
 <body>
@@ -59,13 +65,25 @@
             <img src="heart-locket (1).gif" alt="Corazón animado">
         </div>
     </div>
-    <audio autoplay loop hidden id="audio">
-        <source src="https://I2006K.github.io/Para-adriana/cancion.mp3" type="audio/mp3">
-        Tu navegador no soporta el audio.
-    </audio>
+    
+    <!-- Audio oculto -->
+    <audio id="bg-audio" src="cancion.mp3" loop preload="auto" muted></audio>
+    
+    <!-- Botón para activar sonido -->
+    <button id="unmute-btn">Activa mi sorpresa :D</button>
 
     <script>
-        document.getElementById('audio').volume = 0.01;
+        const audio = document.getElementById("bg-audio");
+        const btn = document.getElementById("unmute-btn");
+
+        // Establecemos el volumen muy bajo por defecto
+        audio.volume = 0.1;
+
+        btn.addEventListener("click", () => {
+            audio.muted = false;
+            audio.play();
+            btn.style.display = "none"; // ocultar el botón tras activar sonido
+        });
     </script>
 </body>
 </html>
